@@ -8,6 +8,7 @@ ros:
     # - node_planner.py
     - landing_controller.py
 
+# not sure if we can reformat the system to accept this modification
 vehicle:
   type: jaxguam
   model: uli_cora

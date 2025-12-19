@@ -5,6 +5,7 @@ ros:
   rosrun_files:
     - node_vehicle.py
     # - node_planner.py
+# not sure if we can reformat the system to accept this modification
 vehicle:
   type: minihawk
   model: uli_minihawk

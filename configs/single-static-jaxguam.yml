@@ -1,5 +1,7 @@
 # Global
-loglevel: DEBUG # One of ["TRACE", "DEBUG", "INFO", "SUCCESS", "WARNING", "ERROR", "CRITICAL"]
+loglevel:
+  DEBUG # One of ["TRACE", "DEBUG", "INFO", "SUCCESS", "WARNING", "ERROR", "CRITICAL"]
+
 
   # The topics recorded are defined in sim_control/script/node_recorder.py
 # Final rosbag is in utils/tmp
@@ -14,6 +16,7 @@ simulation_mode: simple
 landing_threshold: 3.5 #  in meters
 
 # Order of services here is also the order in which services are started
+# ZRWH: I don't think this will work... need significant code modifications to make it work
 services:
   Vehicle Dynamics:
     jaxguam: "1 Vehicle Dynamics/vehicles/jaxguam/jaxguam.yml"
@@ -62,7 +65,7 @@ adv_objects:
     records_dir: /catkin_ws/src/env_sim/rraaa/script/records # Directory where the recordings are stored
     object_names: []
       #- AdvObject1 for later
-      #- AdvObject2 
+      #- AdvObject2
   objects:
     - pose:
         type: relative # One of ["absolute", "relative"]. If "relative", then relative to the starting pose of the ego vehicle.
