@@ -15,27 +15,18 @@ landing_threshold: 3.5 #  in meters
 
 # Order of services here is also the order in which services are started
 services:
-  carla:
-    include: services/carla.yml
-  env_sim:
-    include: services/env_sim.yml
-  jaxguam:
-    include: services/jaxguam.yml
-  # path_planner:
-  #   include: services/path_planner.yml
-  ground_station:
-    include: services/ground_station.yml
-  # yolov5:
-  #   include: services/yolov5.yml
-  sim_control:
-    include: services/sim_control.yml
-  mapper:
-    include: services/mapper.yml
-  rrt_planner:
-    include: services/rrt_planner.yml
-  # verifiable_od:
-  #   include: services/verifiable_od.yml
-
+  Vehicle Dynamics:
+    jaxguam: "1 Vehicle Dynamics/vehicles/jaxguam/jaxguam.yml"
+  Environment Simulation:
+    env_sim: "2 Environment Simulation/env_sim/env_sim.yml"
+    carla: "2 Environment Simulation/env_sim/carla.yml"
+    ground_station: "2 Environment Simulation/ground_station/ground_station.yml"
+    sim_control: "2 Environment Simulation/sim_control/sim_control.yml"
+  Vehicle Intelligence:
+    mapper: "3 Vehicle Intelligence/perception/mapper/mapper.yml"
+    rrt_planner: "3 Vehicle Intelligence/path_planner/trajectory_planner/rrt_planner/rrt_planner.yml"
+  Communication Interface:
+    docker: "4 Communication Interface/docker/docker-compose.yml"
 
 # Test
 map: Town02_Opt
