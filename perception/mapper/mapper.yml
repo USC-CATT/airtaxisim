@@ -1,5 +1,0 @@
-start_delay: 1
-ros:
-  workspace: /catkin_ws
-  ros_package: mapper
-  launch_file: mapper.launch
