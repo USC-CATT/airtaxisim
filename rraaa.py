@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-import rospy
+import rclpy
 import argparse
 import atexit
 import signal
