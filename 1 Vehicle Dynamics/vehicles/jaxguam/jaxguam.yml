@@ -1,0 +1,18 @@
+start_delay: 1
+ros:
+  workspace: /catkin_ws
+  ros_package: jaxguam
+  rosrun_files:
+    - node_vehicle.py
+    # - node_static_landing_planner.py
+    # - node_planner.py
+    - landing_controller.py
+
+# not sure if we can reformat the system to accept this modification
+vehicle:
+  type: jaxguam
+  model: uli_cora
+  debug: false
+  plot: false
+  save_video: false
+  skip_sleep: false

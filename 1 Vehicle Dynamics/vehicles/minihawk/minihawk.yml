@@ -1,0 +1,13 @@
+start_delay: 1
+ros:
+  workspace: /catkin_ws
+  ros_package: minihawk
+  rosrun_files:
+    - node_vehicle.py
+    # - node_planner.py
+# not sure if we can reformat the system to accept this modification
+vehicle:
+  type: minihawk
+  model: uli_minihawk
+  debug: false
+  save_video: false
