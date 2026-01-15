@@ -116,7 +116,7 @@ services:
     working_dir: /catkin_ws/src/jax_guam
     environment:
       - SERVICE_NAME=jaxguam
-  
+
   minihawk:
     container_name: minihawk
     build:
