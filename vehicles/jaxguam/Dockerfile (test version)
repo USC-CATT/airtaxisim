@@ -1,0 +1,43 @@
+FROM ros:noetic
+
+ENV NVIDIA_VISIBLE_DEVICES ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PATH="/usr/local/bin:${PATH}"
+
+RUN apt-get update && apt-get install -y \
+    sudo \
+    software-properties-common \
+    build-essential \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Python 3.10
+RUN add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && apt-get install -y python3.10 python3-dev python3-distutils python3-venv \
+    && rm -rf /var/lib/apt/lists/*
+
+
+# Install pip for Python 3.10
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3.10
+
+RUN apt-get update && apt-get install -y python3-pip
+
+# Install NumPy and loguru
+RUN python3.10 -m pip install --upgrade pip
+RUN python3.10 -m pip3 install numpy loguru ipdb
+
+COPY jax_guam /jax_guam
+WORKDIR /jax_guam
+RUN python3.10 -m pip install -e .
+
+# Set up ROS environment
+ENV ROS_DISTRO=noetic
+ENV ROS_ROOT=/opt/ros/noetic
+ENV ROS_PACKAGE_PATH=$ROS_ROOT/share
+ENV PATH=$ROS_ROOT/bin:$PATH
+ENV PYTHONPATH=$ROS_ROOT/lib/python3/dist-packages:$PYTHONPATH
+ENV LD_LIBRARY_PATH=$ROS_ROOT/lib:$LD_LIBRARY_PATH
+
+RUN mkdir -p /catkin_ws/src
+

@@ -36,7 +36,7 @@ class GUAM_Node(Vehicle_Node):
         jax_use_cpu()
         jax_use_double()
         set_logger_format()
-
+	
         # sim params
         self.skip_sleep = config['ego_vehicle']['skip_sleep']
         self.plot_switch = config['ego_vehicle']['plot']
