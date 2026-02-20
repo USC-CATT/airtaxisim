@@ -1,7 +1,7 @@
 # Global
 loglevel: DEBUG # One of ["TRACE", "DEBUG", "INFO", "SUCCESS", "WARNING", "ERROR", "CRITICAL"]
 
-# The topics recorded are defined in sim_control/script/node_recorder.py
+  # The topics recorded are defined in sim_control/script/node_recorder.py
 # Final rosbag is in utils/tmp
 record_rosbag: false
 record_persistent: false
@@ -9,7 +9,7 @@ record_persistent: false
 # Simulation modes
 # simple: run the simulator and let it run until user stops it via ctrl+c
 # integer value: run simulator for value number of iterations
-simulation_mode: 1
+simulation_mode: simple
 
 landing_threshold: 3.5 #  in meters
 
@@ -69,9 +69,9 @@ adv_objects:
   enabled: True # One of ["True", "False"]
   complex_objects:
     records_dir: /catkin_ws/src/env_sim/rraaa/script/records # Directory where the recordings are stored
-    object_names:
-      - AdvObject1
-      - AdvObject2
+    object_names: []
+      #- AdvObject1 for later
+      #- AdvObject2 
   objects:
     - pose:
         type: relative # One of ["absolute", "relative"]. If "relative", then relative to the starting pose of the ego vehicle.

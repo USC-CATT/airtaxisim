@@ -72,7 +72,6 @@ RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main"
 RUN apt install -y python3-pip &&\
     \
     pip install \
-        extensisq \
         opencv-python \
         pandas \
         pygame \
@@ -87,6 +86,8 @@ RUN apt install -y python3-pip &&\
         torchaudio \
         torchvision \
         wstool
+
+RUN pip install --upgrade numpy
 
 COPY carla-0.9.15-cp38-cp38-linux_x86_64.whl /carla_python_api/carla-0.9.15-cp38-cp38-linux_x86_64.whl
 WORKDIR /carla_python_api
